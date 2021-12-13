@@ -47,11 +47,11 @@ class MainActivityTest {
         onView(withId(R.id.pb_external_donut)).check(matches(isDisplayed()))
         onView(withId(R.id.pb_internal_donut)).check(matches(isDisplayed()))
 
-        onView(withId(R.id.tv_credit_score_label)).check(matches(withText(R.string.your_credit_score_is)))
-        onView(withId(R.id.tv_credit_score)).check(matches(withText("100")))
+        onView(withId(R.id.tv_top_text)).check(matches(withText(R.string.your_credit_score_is)))
+        onView(withId(R.id.tv_center_main_text)).check(matches(withText("100")))
 
         val maxCreditScoreLabel = resources.getString(R.string.out_of, "600")
-        onView(withId(R.id.tv_max_credit_score)).check(matches(withText(maxCreditScoreLabel)))
+        onView(withId(R.id.tv_bottom_text)).check(matches(withText(maxCreditScoreLabel)))
     }
 
     @Test
@@ -61,11 +61,11 @@ class MainActivityTest {
         onView(withId(R.id.pb_external_donut)).check(matches(isDisplayed()))
         onView(withId(R.id.pb_internal_donut)).check(matches(isDisplayed()))
 
-        onView(withId(R.id.tv_credit_score_label)).check(matches(withText(R.string.your_credit_score_is)))
-        onView(withId(R.id.tv_credit_score)).check(matches(withText(R.string.not_available)))
+        onView(withId(R.id.tv_top_text)).check(matches(withText(R.string.your_credit_score_is)))
+        onView(withId(R.id.tv_center_main_text)).check(matches(withText(R.string.not_available)))
 
         val maxCreditScoreLabel =
             resources.getString(R.string.out_of, resources.getString(R.string.not_available))
-        onView(withId(R.id.tv_max_credit_score)).check(matches(withText(maxCreditScoreLabel)))
+        onView(withId(R.id.tv_bottom_text)).check(matches(withText(maxCreditScoreLabel)))
     }
 }

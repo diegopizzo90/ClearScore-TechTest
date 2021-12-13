@@ -28,10 +28,14 @@ class MainActivity : ActivityViewBinding<ActivityMainBinding>() {
     private fun updateGraph(score: Int?, maxScoreValue: Int?) {
         val noCreditScoreAvailable = getString(R.string.not_available)
         binding.donutGraph.updateChartValue(
-            progressValue = score ?: 0,
-            progressMaxValue = maxScoreValue ?: 0,
-            creditScore = score?.toString() ?: noCreditScoreAvailable,
-            maxCreditScore = maxScoreValue?.toString() ?: noCreditScoreAvailable
+            progress = score ?: 0,
+            progressMax = maxScoreValue ?: 0,
+            topTextValue = getString(R.string.your_credit_score_is),
+            mainCenterTextValue = score?.toString() ?: noCreditScoreAvailable,
+            bottomTextValue = getString(
+                R.string.out_of,
+                maxScoreValue?.toString() ?: noCreditScoreAvailable
+            )
         )
     }
 }
