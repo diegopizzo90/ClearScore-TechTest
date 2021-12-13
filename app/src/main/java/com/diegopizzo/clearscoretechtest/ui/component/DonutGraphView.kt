@@ -12,33 +12,53 @@ class DonutGraphView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
     private val binding =
         ComponentDonutGraphBinding.inflate(LayoutInflater.from(context), this, true)
 
-    private val labelTextSize: Float
-    private val creditScoreTextSize: Float
+    private val topTextSizeAttr: Float
+    private val mainCenterTextSizeAttr: Float
+    private val bottomTextSizeAttr: Float
 
     init {
         val styledAttributes = context.obtainStyledAttributes(attrs, R.styleable.DonutGraphView)
-        labelTextSize =
-            styledAttributes.getFloat(R.styleable.DonutGraphView_label_text_size, defaultLabelSize)
-        creditScoreTextSize = styledAttributes.getFloat(
-            R.styleable.DonutGraphView_credit_score_text_size, defaultCreditScoreSize
+
+        topTextSizeAttr = styledAttributes.getFloat(
+            R.styleable.DonutGraphView_top_text_size,
+            defaultTopBottomTextSize
         )
-        binding.tvCreditScoreLabel.textSize = labelTextSize
-        binding.tvMaxCreditScore.textSize = labelTextSize
-        binding.tvCreditScore.textSize = creditScoreTextSize
+        mainCenterTextSizeAttr = styledAttributes.getFloat(
+            R.styleable.DonutGraphView_center_main_text_size,
+            defaultCenterMainTextSize
+        )
+        bottomTextSizeAttr = styledAttributes.getFloat(
+            R.styleable.DonutGraphView_bottom_main_text_size,
+            defaultTopBottomTextSize
+        )
+
+        binding.tvTopText.textSize = topTextSizeAttr
+        binding.tvCenterMainText.textSize = mainCenterTextSizeAttr
+        binding.tvBottomText.textSize = bottomTextSizeAttr
         styledAttributes.recycle()
     }
 
+    /**
+     * Function used to update the values of donut graph
+     *
+     * @param progress indicates the value of internal progress bar
+     * @param progressMax indicates the maximum value reachable of the internal progress bar
+     * @param topTextValue updates the text view located at the top center
+     * @param mainCenterTextValue updates the text view in the center of the donut graph
+     * @param bottomTextValue updates the text view located at the bottom center
+     */
     fun updateChartValue(
-        progressValue: Int,
-        progressMaxValue: Int,
-        creditScore: String,
-        maxCreditScore: String
+        progress: Int,
+        progressMax: Int,
+        topTextValue: String,
+        mainCenterTextValue: String,
+        bottomTextValue: String
     ) {
         binding.pbInternalDonut.progress =
-            calculatePercentageProgress(progressValue, progressMaxValue)
-        binding.tvCreditScore.text = creditScore
-        binding.tvMaxCreditScore.text =
-            context.getString(R.string.out_of, maxCreditScore)
+            calculatePercentageProgress(progress, progressMax)
+        binding.tvTopText.text = topTextValue
+        binding.tvCenterMainText.text = mainCenterTextValue
+        binding.tvBottomText.text = bottomTextValue
     }
 
     private fun calculatePercentageProgress(progressValue: Int, progressMaxValue: Int): Int {
@@ -46,7 +66,7 @@ class DonutGraphView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
     }
 
     companion object {
-        private const val defaultLabelSize = 20F
-        private const val defaultCreditScoreSize = 64F
+        private const val defaultTopBottomTextSize = 20F
+        private const val defaultCenterMainTextSize = 64F
     }
 }

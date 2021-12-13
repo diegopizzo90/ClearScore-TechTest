@@ -36,34 +36,34 @@
         tools:progress="45" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_credit_score_label"
+        android:id="@+id/tv_top_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="sans-serif-medium"
-        android:text="@string/your_credit_score_is"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/tv_credit_score"
+        app:layout_constraintBottom_toTopOf="@+id/tv_center_main_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="@string/your_credit_score_is" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_credit_score"
+        android:id="@+id/tv_center_main_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-thin"
         android:textAppearance="@style/TextAppearance.AppCompat.Display3"
         android:textColor="@color/light_yellow"
-        app:layout_constraintBottom_toTopOf="@+id/tv_max_credit_score"
+        app:layout_constraintBottom_toTopOf="@+id/tv_bottom_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_credit_score_label"
+        app:layout_constraintTop_toBottomOf="@+id/tv_top_text"
         tools:text="327" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_max_credit_score"
+        android:id="@+id/tv_bottom_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -72,7 +72,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_credit_score"
+        app:layout_constraintTop_toBottomOf="@+id/tv_center_main_text"
         tools:text="out of 700" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
