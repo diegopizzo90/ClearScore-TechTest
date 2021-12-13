@@ -54,15 +54,11 @@ class DonutGraphView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
         mainCenterTextValue: String,
         bottomTextValue: String
     ) {
-        binding.pbInternalDonut.progress =
-            calculatePercentageProgress(progress, progressMax)
+        binding.pbInternalDonut.max = progressMax
+        binding.pbInternalDonut.progress = progress
         binding.tvTopText.text = topTextValue
         binding.tvCenterMainText.text = mainCenterTextValue
         binding.tvBottomText.text = bottomTextValue
-    }
-
-    private fun calculatePercentageProgress(progressValue: Int, progressMaxValue: Int): Int {
-        return ((progressValue.toDouble() / progressMaxValue) * 100).toInt()
     }
 
     companion object {
