@@ -14,8 +14,6 @@ import io.reactivex.Single
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.koin.core.context.loadKoinModules
-import org.koin.dsl.module
 import org.mockito.Mock
 import org.mockito.Mockito.`when`
 import org.mockito.junit.MockitoJUnitRunner
@@ -32,10 +30,6 @@ class MainActivityTest {
 
     @Before
     fun setUp() {
-        val interactorModule = module {
-            factory { interactor }
-        }
-        loadKoinModules(interactorModule)
     }
 
     @Test

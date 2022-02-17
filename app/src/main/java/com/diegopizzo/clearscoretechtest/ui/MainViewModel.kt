@@ -3,19 +3,25 @@ package com.diegopizzo.clearscoretechtest.ui
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.diegopizzo.clearscoretechtest.ui.config.MainViewModelModule
+import com.diegopizzo.clearscoretechtest.ui.config.ObserverScheduler
+import com.diegopizzo.clearscoretechtest.ui.config.SubscriberScheduler
 import com.diegopizzo.network.base.Result
 import com.diegopizzo.network.interactor.ICreditScoreInteractor
 import com.diegopizzo.network.model.CreditReportInfo
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
-class MainViewModel(
+@HiltViewModel
+class MainViewModel @Inject constructor(
     private val interactor: ICreditScoreInteractor,
     private val disposables: CompositeDisposable,
-    private val subscriberScheduler: Scheduler = Schedulers.io(),
-    private val observerScheduler: Scheduler = AndroidSchedulers.mainThread()
+    @SubscriberScheduler private val subscriberScheduler: Scheduler,
+    @ObserverScheduler private val observerScheduler: Scheduler
 ) : ViewModel() {
 
     private val _viewStates: MutableLiveData<MainViewState> = MutableLiveData()

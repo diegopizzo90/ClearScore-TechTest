@@ -2,17 +2,20 @@ package com.diegopizzo.clearscoretechtest.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import com.diegopizzo.clearscoretechtest.R
 import com.diegopizzo.clearscoretechtest.databinding.ActivityMainBinding
 import com.diegopizzo.clearscoretechtest.ui.base.ActivityViewBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ActivityViewBinding<ActivityMainBinding>() {
 
     override val bindingInflater: (LayoutInflater) -> ActivityMainBinding
         get() = ActivityMainBinding::inflate
 
-    private lateinit var viewModel: MainViewModel
+    private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

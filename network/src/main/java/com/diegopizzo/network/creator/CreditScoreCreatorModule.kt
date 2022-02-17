@@ -1,0 +1,16 @@
+package com.diegopizzo.network.creator
+
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+
+@Module
+@InstallIn(SingletonComponent::class)
+internal object CreditScoreCreatorModule {
+
+    @Provides
+    fun provideCreator(): ICreditScoreCreator {
+        return CreditScoreCreator()
+    }
+}

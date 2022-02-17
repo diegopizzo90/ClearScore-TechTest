@@ -6,8 +6,9 @@ import com.diegopizzo.network.creator.ICreditScoreCreator
 import com.diegopizzo.network.model.CreditReportInfo
 import com.diegopizzo.network.service.ApiService
 import io.reactivex.Single
+import javax.inject.Inject
 
-internal class CreditScoreInteractor(
+internal class CreditScoreInteractor @Inject constructor(
     private val apiService: ApiService,
     private val creator: ICreditScoreCreator
 ) : BaseInteractor(), ICreditScoreInteractor {

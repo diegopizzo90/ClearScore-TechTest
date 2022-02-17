@@ -11,3 +11,4 @@ interface ICreditScoreInteractor {
      */
     fun getCreditScoreInformation(): Single<Result<CreditReportInfo>>
 }
+
