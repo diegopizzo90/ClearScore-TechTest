@@ -6,14 +6,13 @@ import androidx.lifecycle.Observer
 import com.diegopizzo.clearscoretechtest.R
 import com.diegopizzo.clearscoretechtest.databinding.ActivityMainBinding
 import com.diegopizzo.clearscoretechtest.ui.base.ActivityViewBinding
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : ActivityViewBinding<ActivityMainBinding>() {
 
     override val bindingInflater: (LayoutInflater) -> ActivityMainBinding
         get() = ActivityMainBinding::inflate
 
-    private val viewModel: MainViewModel by viewModel()
+    private lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
